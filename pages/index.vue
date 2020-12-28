@@ -1,10 +1,10 @@
 <template>
-<v-app>
+<v-app :class="{'desktop': !isMobile}">
   <app-bar  />
 <v-banner @click.native="handleBarClick">
 <div class="info-text">
     Questo sito fornisce una stima basilare, mostrandoti quando sarà il tuo turno per ricevere il vaccino in Italia. 💉 <br/>
-      É basato sulla popolazione italiana (dati ISTAT) e presuppone una quota costante di vaccinazioni alla settimana.
+      É basato sulla popolazione italiana (dati ISTAT) e presuppone una quota costante pari a 480000 vaccinazioni ogni settimana.
   </div>            
 </v-banner>
     <div class="component-wrap">
@@ -48,6 +48,12 @@ import Demographic from '~/components/demographic.vue'
         }
       },
 
+      computed: {
+        isMobile: function() {
+          return this.$vuetify.breakpoint.smAndDown;
+        },
+      },
+
       methods: {
         handleBarClick: function() {
           this.clicked += 1;
@@ -71,8 +77,6 @@ import Demographic from '~/components/demographic.vue'
     flex: 1;
     display: flex;
     flex-direction: column;;
-    /* max-height: 100%;
-    min-height: 100%; */
 }
 
   .age-wrapper {
@@ -84,8 +88,13 @@ import Demographic from '~/components/demographic.vue'
     padding: 0 20vw;
   }
   .result-wrapper {
-    flex: 1;
+    flex: 2;
     flex-basis: 0;
-    /* justify-content: center; */
   }
+
+.desktop .result-wrapper {
+  flex: 1;
+  flex-basis: 0;
+
+}
 </style>
