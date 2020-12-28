@@ -2,6 +2,7 @@
   <v-footer
     dark
     padless
+    class="author-footer"
     
   >
     <v-card
@@ -63,7 +64,9 @@ export default {
 </script>
 
 <style>
-
+.author-footer{
+    width: 100%;
+}
 .footer-icon-wrap {
     display: flex;
     justify-content: space-around;
