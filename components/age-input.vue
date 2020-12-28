@@ -4,6 +4,7 @@
         <v-text-field
             v-model="inputValue"
             label="Inserisci la tua età"
+            class="age-input-component"
                   color="success"
                   type="number"
 
@@ -31,6 +32,12 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.age-input-component label {
+    font-size: 1.2em;
+}
+.age-input-component input{
+    font-size: 1.5em;
+    text-align: center;;
+  }
 </style>

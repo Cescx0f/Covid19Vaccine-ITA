@@ -3,7 +3,7 @@
       <v-card
   elevation="3"
   outlined>
-    <v-card-text>
+    <v-card-text class="">
         Ti vaccinerai fra il <span class="font-weight-bold">{{startDate}}</span> e il <span class="font-weight-bold">{{endDate}}</span>
     </v-card-text>
     <v-card-text>
@@ -84,5 +84,9 @@ export default Vue.extend({
     display: flex;
     justify-content: center;
     padding: 0 20px;
+}
+
+.v-card__text {
+    font-size: 1.1em;
 }
 </style>
