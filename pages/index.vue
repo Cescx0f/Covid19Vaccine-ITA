@@ -1,8 +1,9 @@
 <template>
   <section class="container">
     <div>
-      <age-input/>
-      <demographic/>
+      <age-input @age="userAge = parseInt($event)"/>
+      <!-- <demographic/> -->
+      <result v-if="userAge" :age="userAge"/>
       <!-- <h1 class="title">
         NUXT
       </h1>
@@ -23,13 +24,21 @@
 
 <script>
 import AgeInput from '~/components/age-input.vue'
+import Result from '~/components/result.vue'
 import Demographic from '~/components/demographic.vue'
 
   export default {
     components: {
       AgeInput,
-      Demographic
+      Demographic,
+      Result
       },
+
+      data() {
+        return {
+          userAge: null,
+        }
+      }
   }
 </script>
 
