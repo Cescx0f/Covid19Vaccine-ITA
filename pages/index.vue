@@ -2,6 +2,7 @@
   <section class="container">
     <div>
       <age-input/>
+      <demographic/>
       <!-- <h1 class="title">
         NUXT
       </h1>
@@ -22,10 +23,12 @@
 
 <script>
 import AgeInput from '~/components/age-input.vue'
+import Demographic from '~/components/demographic.vue'
 
   export default {
     components: {
-      AgeInput
+      AgeInput,
+      Demographic
       },
   }
 </script>

@@ -3,6 +3,7 @@ module.exports = {
   ** Build configuration
   */
   build: {},
+  buildModules: ['@nuxt/typescript-build'],
   /*
   ** Headers
   ** Common headers are already provided by @nuxtjs/pwa preset

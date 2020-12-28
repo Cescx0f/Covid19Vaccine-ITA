@@ -5,8 +5,10 @@
   "author": "francesco scarpa",
   "private": true,
   "dependencies": {
-    "nuxt": "latest",
-    "@nuxtjs/pwa": "latest"
+    "@nuxt/types": "^2.14.12",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@nuxtjs/pwa": "latest",
+    "nuxt": "latest"
   },
   "scripts": {
     "dev": "nuxt",
