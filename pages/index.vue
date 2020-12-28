@@ -1,37 +1,31 @@
 <template>
-  <section class="container">
-    <div>
+<v-app>
+  <app-bar class="app-bar"/>
+<v-banner>
+                Questo sito fornisce una stima basilare, mostrandoti quando sarà il tuo turno per ricevere il vaccino in Italia. 💉 <br/>
+                É basato sulla popolazione italiana (dati ISTAT) e una quata costante di vaccinazioni alla settimana.
+                
+</v-banner>
+    <div class="component-wrap">
       <age-input @age="userAge = parseInt($event)"/>
       <!-- <demographic/> -->
       <result v-if="userAge" :age="userAge"/>
-      <!-- <h1 class="title">
-        NUXT
-      </h1>
-      <h2 class="subtitle">
-        PWA Vue.js Application
-      </h2>
-      <div :class="['network',online ? 'online' : 'offline']">
-        <div class="circle"></div>
-        {{ online ? 'online' : 'offline' }}
-      </div>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green" rel="noopener">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey" rel="noopener">GitHub</a>
-      </div> -->
     </div>
-  </section>
+</v-app>
 </template>
 
 <script>
 import AgeInput from '~/components/age-input.vue'
 import Result from '~/components/result.vue'
+import AppBar from '~/components/app-bar.vue'
 import Demographic from '~/components/demographic.vue'
 
   export default {
     components: {
       AgeInput,
       Demographic,
-      Result
+      Result,
+      AppBar,
       },
 
       data() {
@@ -43,50 +37,18 @@ import Demographic from '~/components/demographic.vue'
 </script>
 
 <style>
-  .container {
-    min-height: 100vh;
+.app-bar {
+  flex: 0;
+}
+.component-wrap{
+    width: 80vw;
+    flex: 1;
     display: flex;
+    flex-direction: column;;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+}
 
-  .title {
-    font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
-  }
-
-  .subtitle {
-    font-weight: 300;
-    font-size: 42px;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-  }
-
-  .links {
-    padding-top: 15px;
-  }
-
-  .network {
-    font-weight: 400;
-    font-size: 1rem;
-  }
-
-  .network .circle {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    background: green;
-    padding: .1rem .5rem;
-    border-radius: 1rem;
-  }
-
-  .network.offline .circle {
-    background: red;
+  .info-card {
+    margin-top: 50px;
   }
 </style>

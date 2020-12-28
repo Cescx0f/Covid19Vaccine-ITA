@@ -3,7 +3,10 @@ module.exports = {
   ** Build configuration
   */
   build: {},
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    ['@nuxtjs/vuetify', { defaultAssets: false }]
+  ],
   /*
   ** Headers
   ** Common headers are already provided by @nuxtjs/pwa preset
@@ -23,7 +26,6 @@ module.exports = {
   ** Modules
   */
 
-  plugins: ['~/plugins/md-components.js'],
 
   modules: [
     '@nuxtjs/pwa'

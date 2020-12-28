@@ -1,9 +1,13 @@
 <template>
   <div>
-    <md-field>
-        <label>Inserisci la tua età</label>
-        <md-input v-model="inputValue" type="number"></md-input>
-    </md-field>
+      <v-form>
+        <v-text-field
+            v-model="inputValue"
+            label="Inserisci la tua età"
+                  color="success"
+
+          ></v-text-field>
+      </v-form>
   </div>
 </template>
 
