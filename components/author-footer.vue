@@ -2,11 +2,10 @@
   <v-footer
     dark
     padless
-    class="author-footer"
     
   >
     <v-card
-      class="flex"
+      class="flex author-footer"
       flat
       tile
     >
