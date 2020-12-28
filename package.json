@@ -8,6 +8,7 @@
     "@nuxt/types": "^2.14.12",
     "@nuxt/typescript-build": "^2.0.3",
     "@nuxtjs/pwa": "latest",
+    "date-fns": "^2.16.1",
     "nuxt": "latest"
   },
   "scripts": {
