@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import { popAheadOfAge, isValidAge, computeVaccineDates, computeTotPop } from '~/business/utils';
+import { popAheadOfAge, isValidAge, computeVaccineDates, computeTotPop, VaccineExpected } from '~/business/utils';
 
 export default Vue.extend({
     props: {
