@@ -29,5 +29,10 @@ module.exports = {
 
   modules: [
     '@nuxtjs/pwa'
-  ]
+  ],
+  pwa: {
+    meta: {
+      name: 'Vaccino COVID19'
+    }
+  }
 }

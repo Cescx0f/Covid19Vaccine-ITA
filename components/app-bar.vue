@@ -1,6 +1,6 @@
 <template>
   <v-app-bar class="app-bar-main">
-        <v-toolbar-title>Vaccino Covid19 - ITALIA</v-toolbar-title>
+        <v-toolbar-title>Vaccino COVID19</v-toolbar-title>
 
         <div class="bg-flag-fade" :style="gradient"></div>
         <div class="bg-flag"></div>
@@ -22,7 +22,7 @@ export default Vue.extend({
                         const lightGradient = `background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255,255,255,0.6) 74%, rgba(0,0,0,0) 100%);`;
                         const darkGradient = `background: linear-gradient(0deg, rgba(18, 18, 18, 1) 0%, rgba(18,18,18,0.5) 74%, rgba(0,0,0,0) 100%);`;
                         return this.$vuetify.theme.dark ? darkGradient : lightGradient;
-                                
+                          
 
                 }
         }
