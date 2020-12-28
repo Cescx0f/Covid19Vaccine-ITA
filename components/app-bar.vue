@@ -2,7 +2,7 @@
   <v-app-bar class="app-bar-main">
         <v-toolbar-title>Vaccino Covid19 - ITALIA</v-toolbar-title>
 
-        <div class="bg-flag-fade"></div>
+        <div class="bg-flag-fade" :style="gradient"></div>
         <div class="bg-flag"></div>
   </v-app-bar>
 
@@ -16,15 +16,26 @@ export default Vue.extend({
                 return {
                         showInfoDialog: false
                 }
+        },
+        computed: {
+                gradient: function() {
+                        const lightGradient = `background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255,255,255,0.6) 74%, rgba(0,0,0,0) 100%);`;
+                        const darkGradient = `background: linear-gradient(0deg, rgba(18, 18, 18, 1) 0%, rgba(18,18,18,0.5) 74%, rgba(0,0,0,0) 100%);`;
+                        return this.$vuetify.theme.dark ? darkGradient : lightGradient;
+                                
+
+                }
         }
     
 })
 </script>
 
-<style>
+<style lang="scss" scoped>
+  @import '~vuetify/src/styles/styles.sass';
+
+
 .app-bar-main {
         flex: 0 !important;
-        overflow: hidden;
 }
 
 .bg-flag, .bg-flag-fade{
@@ -51,7 +62,6 @@ export default Vue.extend({
 
 .bg-flag-fade {
         z-index: -1;
-        background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 74%, rgba(0,0,0,0) 100%);
 }
 
 

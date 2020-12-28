@@ -1,15 +1,18 @@
 <template>
 <v-app>
-  <app-bar />
-<v-banner>
-                Questo sito fornisce una stima basilare, mostrandoti quando sarà il tuo turno per ricevere il vaccino in Italia. 💉 <br/>
-                É basato sulla popolazione italiana (dati ISTAT) e presuppone una quota costante di vaccinazioni alla settimana.
-                
+  <app-bar  />
+<v-banner @click.native="handleBarClick">
+<div class="info-text">
+    Questo sito fornisce una stima basilare, mostrandoti quando sarà il tuo turno per ricevere il vaccino in Italia. 💉 <br/>
+      É basato sulla popolazione italiana (dati ISTAT) e presuppone una quota costante di vaccinazioni alla settimana.
+  </div>            
 </v-banner>
     <div class="component-wrap">
-      <age-input @age="userAge = parseInt($event)"/>
+      <age-input class="age-wrapper" @age="userAge = parseInt($event)"/>
       <!-- <demographic/> -->
-      <result v-if="userAge" :age="userAge"/>
+      <div class="result-wrapper">
+        <result v-if="userAge" :age="userAge"/>
+      </div>
     </div>
 </v-app>
 </template>
@@ -27,10 +30,28 @@ import Demographic from '~/components/demographic.vue'
       Result,
       AppBar,
       },
+      
+      beforeMount: function() {
+        const mediaQuery = '(prefers-color-scheme:dark)';
+        const matched = window.matchMedia(mediaQuery).matches;
+        
+        this.$vuetify.theme.dark = matched;
+      },
 
       data() {
         return {
           userAge: null,
+          clicked: 0,
+        }
+      },
+
+      methods: {
+        handleBarClick: function() {
+          this.clicked += 1;
+          if (this.clicked%5 === 0) {
+            this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+            console.log('switched Theme', this.$vuetify.theme.dark)
+          }
         }
       }
   }
@@ -38,15 +59,30 @@ import Demographic from '~/components/demographic.vue'
 
 <style>
 
+.info-text {
+  text-align: center;
+  
+}
+
 .component-wrap{
-    padding: 0 20vw;
     flex: 1;
     display: flex;
     flex-direction: column;;
-    justify-content: center;
+    /* max-height: 100%;
+    min-height: 100%; */
 }
 
-  .info-card {
-    margin-top: 50px;
+  .age-wrapper {
+    flex: 1;
+    flex-basis: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20vw;
+  }
+  .result-wrapper {
+    flex: 1;
+    flex-basis: 0;
+    /* justify-content: center; */
   }
 </style>

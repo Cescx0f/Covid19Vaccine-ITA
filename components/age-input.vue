@@ -5,6 +5,7 @@
             v-model="inputValue"
             label="Inserisci la tua età"
                   color="success"
+                  type="number"
 
           ></v-text-field>
       </v-form>

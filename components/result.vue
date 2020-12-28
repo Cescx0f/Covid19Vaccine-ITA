@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <div>
-        Ci sono {{popAhead}} persone davanti a te ({{popAheadPerc}}% della popolazione totale)
-    </div>
-    <div>
-        Ti vaccinerai fra il {{startDate}} e il {{endDate}}
-    </div>
+  <div class="result-card-wrap">
+      <v-card
+  elevation="3"
+  outlined>
+    <v-card-text>
+        Ti vaccinerai fra il <span class="font-weight-bold">{{startDate}}</span> e il <span class="font-weight-bold">{{endDate}}</span>
+    </v-card-text>
+    <v-card-text>
+        Ci sono <span class="font-weight-bold">{{popAheadStr}}</span> persone davanti a te (<span class="font-weight-bold">{{popAheadPerc}}</span>% della popolazione totale)
+    </v-card-text>
+  
+  </v-card>
 
   </div>
 </template>
@@ -45,6 +50,10 @@ export default Vue.extend({
             return popAheadOfAge(this.computedAge);
         },
 
+        popAheadStr: function(): string {
+            return this.popAhead.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");;
+        },
+
         popAheadPerc: function(): number {
             const rawPerc = (100 * this.popAhead) / this.totPop;
             return Math.round(rawPerc * 100) / 100
@@ -67,5 +76,13 @@ export default Vue.extend({
 </script>
 
 <style>
+.bold {
 
+}
+.result-card-wrap {
+    flex: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
 </style>
