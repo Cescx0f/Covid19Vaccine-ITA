@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar>
+  <v-app-bar class="app-bar-main">
         <v-toolbar-title>Vaccino Covid19 - ITALIA</v-toolbar-title>
 
         <div class="bg-flag-fade"></div>
@@ -22,6 +22,11 @@ export default Vue.extend({
 </script>
 
 <style>
+.app-bar-main {
+        flex: 0 !important;
+        overflow: hidden;
+}
+
 .bg-flag, .bg-flag-fade{
         position: absolute;
         left: 0;

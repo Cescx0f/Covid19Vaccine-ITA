@@ -1,6 +1,6 @@
 <template>
 <v-app>
-  <app-bar class="app-bar-main"/>
+  <app-bar />
 <v-banner>
                 Questo sito fornisce una stima basilare, mostrandoti quando sarà il tuo turno per ricevere il vaccino in Italia. 💉 <br/>
                 É basato sulla popolazione italiana (dati ISTAT) e presuppone una quota costante di vaccinazioni alla settimana.
@@ -37,9 +37,7 @@ import Demographic from '~/components/demographic.vue'
 </script>
 
 <style>
-.app-bar-main {
-  flex: 0 !important;
-}
+
 .component-wrap{
     padding: 0 20vw;
     flex: 1;
