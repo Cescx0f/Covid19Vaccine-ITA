@@ -14,6 +14,7 @@
         <result v-if="userAge" :age="userAge"/>
       </div>
     </div>
+    <author-footer />
 </v-app>
 </template>
 
@@ -21,6 +22,7 @@
 import AgeInput from '~/components/age-input.vue'
 import Result from '~/components/result.vue'
 import AppBar from '~/components/app-bar.vue'
+import AuthorFooter from '~/components/author-footer.vue'
 import Demographic from '~/components/demographic.vue'
 
   export default {
@@ -29,6 +31,7 @@ import Demographic from '~/components/demographic.vue'
       Demographic,
       Result,
       AppBar,
+      AuthorFooter,
       },
       
       beforeMount: function() {

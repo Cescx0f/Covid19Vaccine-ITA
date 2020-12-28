@@ -5,11 +5,15 @@
             v-model="inputValue"
             label="Inserisci la tua età"
             solo
+            @submit.prevent
             class="age-input-component"
                   color="success"
                   type="number"
 
           ></v-text-field>
+          <!-- dummy hidden input to prevent submit event -->
+          <input type="text" style="display: none;" /> 
+
       </v-form>
   </div>
 </template>
