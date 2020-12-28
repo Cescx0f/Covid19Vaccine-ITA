@@ -41,7 +41,7 @@ import Demographic from '~/components/demographic.vue'
   flex: 0;
 }
 .component-wrap{
-    width: 80vw;
+    padding: 0 20vw;
     flex: 1;
     display: flex;
     flex-direction: column;;

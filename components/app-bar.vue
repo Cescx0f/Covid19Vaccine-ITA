@@ -1,11 +1,7 @@
 <template>
   <v-app-bar>
         <v-toolbar-title>Vaccino Covid19 - ITALIA</v-toolbar-title>
-        <template v-slot:img="{ props }">
-                <v-img
-                gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
-                ></v-img>
-        </template>
+
         <div class="bg-flag-fade"></div>
         <div class="bg-flag"></div>
   </v-app-bar>
