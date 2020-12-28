@@ -22,6 +22,9 @@ module.exports = {
   /*
   ** Modules
   */
+
+  plugins: ['~/plugins/md-components.js'],
+
   modules: [
     '@nuxtjs/pwa'
   ]

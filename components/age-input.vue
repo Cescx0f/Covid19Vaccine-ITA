@@ -1,15 +1,19 @@
 <template>
   <div>
-      <input v-model="inputValue" placeholder="inserisci qui la tua età" type="number"/>
+    <md-field>
+        <label>Inserisci la tua età</label>
+        <md-input v-model="inputValue" type="number"></md-input>
+    </md-field>
   </div>
 </template>
 
 <script>
+
 export default {
 
     data() {
         return {
-            inputValue: 0,
+            inputValue: null,
         }
     },
 
