@@ -11,7 +11,7 @@
       <age-input class="age-wrapper" @age="userAge = parseInt($event)"/>
       <!-- <demographic/> -->
       <div class="result-wrapper">
-        <result v-if="userAge" :age="userAge"/>
+        <result v-if="userAge && userAge >0" :age="userAge"/>
       </div>
     </div>
     <author-footer />
