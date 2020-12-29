@@ -68,15 +68,6 @@ import Demographic from '~/components/demographic.vue'
 
 <style>
 
-body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-
-html {
-  height: -webkit-fill-available;
-}
-
 
 .info-text {
   text-align: center;
