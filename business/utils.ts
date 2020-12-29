@@ -1,26 +1,33 @@
 import { population } from './demographic';
 import { add } from 'date-fns'
 
-const VACCINE_PER_WEEK = 480000 
+const MILLIS_IN_WEEK = 604800000 
 
 const VACCINES_PER_QUARTER = [
-    28269000,
-    57202000,
-    53840000,
-    14806000,
-    28266000,
-    20190000,
+    28269000, // q1 2021
+    57202000, // q2 2021
+    53840000, // q3 2021
+    14806000, // q4 2021
+    28266000, // q1 2022
+    20190000, // q2 2022
 ];
 // 14 weeks in a quarter
 function getVaccineRatioPerWeek(week: number): number {
-    return VACCINES_PER_QUARTER[Math.min(week%14, VACCINES_PER_QUARTER.length - 1)]/14;
+    // consider first 2 weeks outside of quarter logic
+    if (week <= 1) {
+        const decemberRatio = 800000;
+        return decemberRatio /2
+    }
+    const weekFrom2020 = week - 2;
+    const quarter = Math.trunc(weekFrom2020/14)
+    return VACCINES_PER_QUARTER[Math.min(quarter, VACCINES_PER_QUARTER.length - 1)]/14;
 }
 
 export function computeVaccineDatesV2(age: number): VaccineExpected {
     
 
     const popOfAge = getPopOfAge(age -1);
-    console.log('compute age' , age, popOfAge)
+    // const popAhead = popAheadOfAge(age);
     let vaccinated = 0;
 
     let startWeek = null;
@@ -31,8 +38,8 @@ export function computeVaccineDatesV2(age: number): VaccineExpected {
 
     while (week < maxWeek && (startWeek == null || endWeek == null)){
 
-        // console.log('compute week', week)
-        vaccinated += getVaccineRatioPerWeek(week);
+        // console.log('cycle', week)
+        vaccinated += Math.trunc(getVaccineRatioPerWeek(week));
 
         if(isNaN(vaccinated)) {
             console.error('vaccinated NAN');
@@ -41,28 +48,26 @@ export function computeVaccineDatesV2(age: number): VaccineExpected {
 
         if(startWeek == null && vaccinated >= popAheadOfAge(age)) {
             startWeek = week;
-            console.log('startWeek set', startWeek)
+            // console.log('startWeek set', startWeek)
         }
         
         if(endWeek == null && vaccinated >= (popAheadOfAge(age) + popOfAge)) {
             endWeek = week === startWeek ? week + 1 : week;
-            console.log('endWeek set', endWeek)
+            // console.log('endWeek set', endWeek, week === startWeek)
         }
 
         week +=1;
     }
 
+    // console.log('compute age' , age, {vaccinated: vaccinated-getVaccineRatioPerWeek(startWeek), vaccinePower: getVaccineRatioPerWeek(startWeek), popOfAge, popAhead,})
 
     return {
-        startDate: add(START_VACCINE_DATE_MILLIS, {weeks: startWeek ?? 1 -1}).getTime(),
-        endDate: add(START_VACCINE_DATE_MILLIS, {weeks: endWeek ?? 1}).getTime()
+        startDate: START_VACCINE_DATE_MILLIS + ((startWeek ?? 1 -1)*MILLIS_IN_WEEK),
+        endDate: START_VACCINE_DATE_MILLIS + ((endWeek ?? 1)*MILLIS_IN_WEEK)
     }
 
 
 }
-
-
-const VACCINE_PER_DAY = VACCINE_PER_WEEK/7;
 
 
 const ALREADY_VACCINATED = 0;
