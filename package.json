@@ -1,8 +1,8 @@
 {
   "name": "covid19vaccine_ita",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
-  "author": "francesco scarpa",
+  "description": "Calcola quando sarà il tuo turno per ricevere il vaccino.",
+  "author": "Francesco Scarpa",
   "private": true,
   "dependencies": {
     "@nuxt/types": "^2.14.12",

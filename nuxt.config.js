@@ -11,7 +11,17 @@ module.exports = {
   ** Headers
   ** Common headers are already provided by @nuxtjs/pwa preset
   */
-  head: {},
+  head: {
+    title: 'Vaccino COVID19 - Quando tocca a te?',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Calcola quando sarà il tuo turno per ricevere il vaccino.'
+      }
+    ],
   /*
   ** Customize the progress-bar color
   */
