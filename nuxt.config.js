@@ -22,6 +22,7 @@ module.exports = {
         content: 'Calcola quando sarà il tuo turno per ricevere il vaccino.'
       }
     ],
+  },
   /*
   ** Customize the progress-bar color
   */
