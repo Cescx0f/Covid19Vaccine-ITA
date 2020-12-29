@@ -18,7 +18,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import { popAheadOfAge, isValidAge, computeVaccineDates, computeTotPop, VaccineExpected } from '~/business/utils';
+import { popAheadOfAge, isValidAge, computeVaccineDatesV2, computeTotPop, VaccineExpected } from '~/business/utils';
 
 export default Vue.extend({
     props: {
@@ -60,7 +60,7 @@ export default Vue.extend({
         },
 
         vaccineDates: function(): VaccineExpected {
-            return computeVaccineDates(this.computedAge);
+            return computeVaccineDatesV2(this.computedAge);
         },
 
         startDate: function(): string {

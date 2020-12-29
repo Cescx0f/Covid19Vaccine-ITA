@@ -2,7 +2,7 @@
   <v-footer
     dark
     padless
-    
+    fixed
   >
     <v-card
       class="flex author-footer"

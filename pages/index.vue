@@ -3,8 +3,8 @@
   <app-bar  />
 <v-banner @click.native="handleBarClick">
 <div class="info-text">
-    Questo sito fornisce una stima basilare, mostrandoti quando sarà il tuo turno per ricevere il vaccino in Italia. 💉 <br/>
-      É basato sulla popolazione italiana (dati ISTAT) e presuppone una quota costante pari a 480000 vaccinazioni ogni settimana.
+    Questo sito ti fornisce una stima di quando sarà il tuo turno per ricevere il vaccino in Italia. 💉 <br/>
+    Si basa su dati ISTAT di demografia  e le stime del governo pubblicate sul <a target="_blank" rel="noopener noreferrer" href="http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?lingua=italiano&id=5452&area=nuovoCoronavirus&menu=vuoto">Ministero Della Salute</a>
   </div>            
 </v-banner>
     <div class="component-wrap">
@@ -67,6 +67,16 @@ import Demographic from '~/components/demographic.vue'
 </script>
 
 <style>
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
 
 .info-text {
   text-align: center;
