@@ -20,8 +20,13 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content: 'Calcola quando sarà il tuo turno per ricevere il vaccino.'
+      },
+      {
+        hid: 'google-site-verification',
+        name: 'google-site-verification',
+        content: 'Mzsdtk8SkIrX2cb5etVTNzOuOjrz2aksLMrHOdnpLG4'
       }
-    ],
+    ]
   },
   /*
   ** Customize the progress-bar color
