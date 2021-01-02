@@ -41,12 +41,13 @@ module.exports = {
   /*
   ** Modules
   */
-
-
   modules: [
     '@nuxtjs/pwa'
   ],
   pwa: {
+    icon: {
+      fileName: 'app-icon.png'
+    },
     meta: {
       name: 'Vaccino COVID19'
     }
