@@ -2,21 +2,23 @@ import { population } from './demographic';
 import { add } from 'date-fns'
 
 const MILLIS_IN_WEEK = 604800000 
+const N_DOSES = 2;
 
 const VACCINES_PER_QUARTER = [
-    28269000, // q1 2021
-    57202000, // q2 2021
-    53840000, // q3 2021
-    14806000, // q4 2021
-    28266000, // q1 2022
-    20190000, // q2 2022
+    28269000 / N_DOSES, // q1 2021
+    57202000 / N_DOSES, // q2 2021
+    53840000 / N_DOSES, // q3 2021
+    14806000 / N_DOSES, // q4 2021
+    28266000 / N_DOSES, // q1 2022
+    20190000 / N_DOSES, // q2 2022
 ];
+
 // 14 weeks in a quarter
 function getVaccineRatioPerWeek(week: number): number {
     // consider first 2 weeks outside of quarter logic
     if (week <= 1) {
-        const decemberRatio = 800000;
-        return decemberRatio /2
+        const decemberRatio = 67000;
+        return decemberRatio / N_DOSES;
     }
     const weekFrom2020 = week - 2;
     const quarter = Math.trunc(weekFrom2020/14)
