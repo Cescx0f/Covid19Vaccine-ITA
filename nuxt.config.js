@@ -50,6 +50,10 @@ module.exports = {
     },
     meta: {
       name: 'Vaccino COVID19'
+    },
+    manifest: {
+      name: 'Vaccino COVID19 - Quando tocca a te?',
+      short_name: 'Vaccino COVID19',
     }
   }
 }
