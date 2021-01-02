@@ -8,10 +8,10 @@
   </div>            
 </v-banner>
     <div class="component-wrap">
-      <age-input class="age-wrapper" @age="userAge = parseInt($event)"/>
+      <age-input class="age-wrapper" @age="userAge = parseInt($event)" @priorityChange="handlePriorityChange"/>
       <!-- <demographic/> -->
       <div class="result-wrapper">
-        <result v-if="userAge && userAge >0" :age="userAge"/>
+        <result v-if="showResults" :isUserPriority="isUserPriority" :age="userAge"/>
       </div>
     </div>
     <author-footer />
@@ -44,6 +44,7 @@ import Demographic from '~/components/demographic.vue'
       data() {
         return {
           userAge: null,
+          isUserPriority: null,
           clicked: 0,
         }
       },
@@ -52,6 +53,10 @@ import Demographic from '~/components/demographic.vue'
         isMobile: function() {
           return this.$vuetify.breakpoint.smAndDown;
         },
+
+        showResults: function() {
+          return (this.userAge && this.userAge >0) || this.isUserPriority
+        }
       },
 
       methods: {
@@ -61,6 +66,11 @@ import Demographic from '~/components/demographic.vue'
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark
             console.log('switched Theme', this.$vuetify.theme.dark)
           }
+        },
+
+        handlePriorityChange: function(val) {
+          console.log(val);
+          this.isUserPriority = val;
         }
       }
   }

@@ -101,3 +101,11 @@ export const population: number[] = [
 	13421,
     14804
 ];
+
+
+const popRSA = 367485;
+
+// http://dati.istat.it/Index.aspx?DataSetCode=DCIS_PERS_SANIT
+const popMedici = 240288;
+const popInfermieri = 346949;
+export const popPriority: number = popRSA + popMedici + popInfermieri;

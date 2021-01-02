@@ -1,4 +1,4 @@
-import { population } from './demographic';
+import { population, popPriority } from './demographic';
 import { add } from 'date-fns'
 
 const MILLIS_IN_WEEK = 604800000 
@@ -25,11 +25,15 @@ function getVaccineRatioPerWeek(week: number): number {
     return VACCINES_PER_QUARTER[Math.min(quarter, VACCINES_PER_QUARTER.length - 1)]/14;
 }
 
-export function computeVaccineDatesV2(age: number): VaccineExpected {
+interface ComputationOptions {
+    isUserPriority: boolean;
+}
+
+export function computeVaccineDatesV2(age: number, opts?: ComputationOptions): VaccineExpected {
     
 
-    const popOfAge = getPopOfAge(age -1);
-    // const popAhead = popAheadOfAge(age);
+    const popOfAge = opts?.isUserPriority ? popPriority : getPopOfAge(age -1);
+    const popAhead = popAheadOfAge(age) + (opts?.isUserPriority ? 0 : popPriority);
     let vaccinated = 0;
 
     let startWeek = null;
@@ -37,6 +41,12 @@ export function computeVaccineDatesV2(age: number): VaccineExpected {
 
     let week = 0;
     const maxWeek = 14 * (VACCINES_PER_QUARTER.length - 1);
+
+    // population threshold for identifing  start/end week
+    // your start week begins after pop ahead of you
+    const startWeekTargetPop = opts?.isUserPriority ? 0 : popAhead;
+    // your end week considers you as the last person of your age group (worst case scenario)
+    const endWeekTargetPop = opts?.isUserPriority ? popPriority : popAhead + popOfAge;
 
     while (week < maxWeek && (startWeek == null || endWeek == null)){
 
@@ -48,12 +58,12 @@ export function computeVaccineDatesV2(age: number): VaccineExpected {
             debugger;
         }
 
-        if(startWeek == null && vaccinated >= popAheadOfAge(age)) {
+        if(startWeek == null && vaccinated >= startWeekTargetPop) {
             startWeek = week;
             // console.log('startWeek set', startWeek)
         }
         
-        if(endWeek == null && vaccinated >= (popAheadOfAge(age) + popOfAge)) {
+        if(endWeek == null && vaccinated >= endWeekTargetPop) {
             endWeek = week === startWeek ? week + 1 : week;
             // console.log('endWeek set', endWeek, week === startWeek)
         }

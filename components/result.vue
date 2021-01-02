@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { popPriority } from '~/business/demographic';
 
 import { popAheadOfAge, isValidAge, computeVaccineDatesV2, computeTotPop, VaccineExpected } from '~/business/utils';
 
@@ -24,7 +25,10 @@ export default Vue.extend({
     props: {
         age: {
             type: Number,
-        }
+        },
+        isUserPriority: {
+            type: Boolean,
+        },
     },
 
     computed: {
@@ -47,7 +51,7 @@ export default Vue.extend({
         },
         
         popAhead: function(): number {
-            return popAheadOfAge(this.computedAge);
+            return  popPriority + (this.isUserPriority ? 0 : popAheadOfAge(this.computedAge));
         },
 
         popAheadStr: function(): string {
@@ -60,7 +64,7 @@ export default Vue.extend({
         },
 
         vaccineDates: function(): VaccineExpected {
-            return computeVaccineDatesV2(this.computedAge);
+            return computeVaccineDatesV2(this.computedAge, {isUserPriority: this.isUserPriority});
         },
 
         startDate: function(): string {
